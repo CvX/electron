@@ -78,8 +78,10 @@ Notification::Notification(v8::Isolate* isolate,
 }
 
 Notification::~Notification() {
-  if (notification_)
+  if (notification_) {
+    LOG(INFO) << "destroying a Notification (" << &body_ << ")";
     notification_->set_delegate(nullptr);
+  }
 }
 
 // static
